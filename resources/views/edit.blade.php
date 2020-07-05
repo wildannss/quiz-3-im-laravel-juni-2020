@@ -67,22 +67,51 @@
         @extends('layouts.master')
 
         @section('isi')
-        
+
         <a class="btn btn-success btn-icon-split" href="/artikel"> List Artikel </a>
-        <a class="btn btn-success btn-icon-split" href="/artikel/create"> Tambah Artikel </a>
         
-        @foreach($articles as $article)
-            <h1>Judul: {{ $article->title }}</h1>
-            <p>Slug: {{ $article->slug }}</p>
-            <p>{{ $article->body }}</p>
-            <a class="btn btn-primary btn-icon-split" href="{{ url('/artikel/'.$article->id) }}"> Detail </a>
-            <a class="btn btn-primary btn-icon-split" href="{{ url('/artikel/'.$article->id.'/edit') }}"> Edit </a><br />
-            <form method="post" action="{{ url('/artikel/'.$article->id) }}">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-success btn-icon-split"> Delete </button>
-            </form>
-        @endforeach
+        <form method="post" action={{ url('/artikel/'.$article->id) }} >
+            @method('PUT')
+            @csrf
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            Judul Artikel
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" name="title" for="title" value={{ $article->title }} />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Isi Artikel
+                        </label>
+                    </td>
+                    <td>
+                        <textarea name="body" for="body" >{{ $article->body }}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Tag
+                        </label>
+                    </td>
+                    <td>
+                        <input type="text" name="tag" for="tag" value={{ $article->tag }} />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-primary btn-icon-split" type="submit">Edit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
 
         @endsection
         

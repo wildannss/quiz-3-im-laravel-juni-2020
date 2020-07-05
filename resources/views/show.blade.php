@@ -70,19 +70,12 @@
         
         <a class="btn btn-success btn-icon-split" href="/artikel"> List Artikel </a>
         <a class="btn btn-success btn-icon-split" href="/artikel/create"> Tambah Artikel </a>
-        
-        @foreach($articles as $article)
-            <h1>Judul: {{ $article->title }}</h1>
-            <p>Slug: {{ $article->slug }}</p>
-            <p>{{ $article->body }}</p>
-            <a class="btn btn-primary btn-icon-split" href="{{ url('/artikel/'.$article->id) }}"> Detail </a>
-            <a class="btn btn-primary btn-icon-split" href="{{ url('/artikel/'.$article->id.'/edit') }}"> Edit </a><br />
-            <form method="post" action="{{ url('/artikel/'.$article->id) }}">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="btn btn-success btn-icon-split"> Delete </button>
-            </form>
-        @endforeach
+        <a class="btn btn-success btn-icon-split" href="{{ url('/artikel/'.$article->id.'/edit') }}"> Edit </a>
+
+        <h1>Detail Artikel </h1>
+        <h1>Judul: {{ $article->title }}</h1>
+        <p>Slug: {{ $article->slug }}</p>
+        <p>{{ $article->body }}</p>
 
         @endsection
         

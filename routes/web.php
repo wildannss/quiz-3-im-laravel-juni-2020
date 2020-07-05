@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/items/create', 'ItemController@create'); // menampilkan halaman form
-Route::post('/items', 'ItemController@store'); // menyimpan data
-Route::get('/items', 'ItemController@index'); // menampilkan semua
-Route::get('/items/{id}', 'ItemController@show'); // menampilkan detail item dengan id 
-Route::get('/items/{id}/edit', 'ItemController@edit'); // menampilkan form untuk edit item
-Route::put('/items/{id}', 'ItemController@update'); // menyimpan perubahan dari form edit
-Route::delete('/items/{id}', 'ItemController@destroy'); // menghapus data dengan id
+Route::get('/', 'ArtikelController@home'); // menampilkan gambar PNG/JPG/JPEG desain ERD yang sudah dibuat di soal no. 1
+Route::get('/artikel', 'ArtikelController@index'); // GET 	menampilkan tabel berisi data artikel-artikel
+Route::get('/artikel/create', 'ArtikelController@create'); // GET 	menampilkan form untuk membuat artikel baru
+Route::post('/artikel', 'ArtikelController@store'); // POST 	menyimpan artikel baru
+Route::get('/artikel/{id}', 'ArtikelController@show'); //	GET 	menampilkan halaman detil (show) untuk artikel dengan id tertentu
+Route::get('/artikel/{id}/edit', 'ArtikelController@edit'); // GET 	menampilkan halaman form edit untuk artikel dengan id tertentu
+Route::put('/artikel/{id}', 'ArtikelController@update'); // PUT 	menyimpan data dari form edit
+Route::delete('/artikel/{id}', 'ArtikelController@destroy'); // DELETE 	menghapus data dengan id tertentu
